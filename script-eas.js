@@ -20,9 +20,9 @@ for (let g = 0; g < g; g++) {
 
 
 document.querySelector('#gridForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Corrected method call with parentheses
-    let gridNum = document.querySelector("#gridInput").value; // Assuming you have an input with id="gridSize"
-    console.log('Grid Size:', gridNum); // Corrected variable reference
+    event.preventDefault();
+    let gridNum = document.querySelector("#gridInput").value;
+    console.log('Grid Size:', gridNum);
 });
 
 
