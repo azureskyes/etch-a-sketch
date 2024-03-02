@@ -23,22 +23,37 @@ document.querySelector('#gridForm').addEventListener('submit', function(event) {
     event.preventDefault();
     let gridNum = document.querySelector("#gridInput").value;
     console.log('Grid Size:', gridNum);
+    createGroup(gridNum);
 });
 
 
-function gridCreate(gridSize) {
-
+function createGroup(groupSize) {
+    let gSize = groupSize;
+    for (let i = 0; i < gSize; i++) {
+        createColumn(groupSize);
+        console.log(i)
+    }
 }
-let gridGroup = 5;
-let gridNum = 5;
-let g = gridNum;
 
-for (let i = 0; i < g; i++) {
-    let newDivGroup = document.createElement("div");
-    newDivGroup.className = ("divGroup-" + gridGroup )
-    let newDiv = document.createElement("div");
-    newDiv.className = ("div-" + (i + 1));
-    newDiv.textContent = (i + 1);
-    let canvasContainer = document.querySelector(".canvas-container");
-    canvasContainer.appendChild(newDiv);
-}
+function createColumn(columnSize) {
+    let cSize = columnSize; 
+    for (let i = 0; i < cSize; i++) {
+        let newDiv = document.createElement("div");
+        newDiv.className = ("div-" + (i + 1));
+        newDiv.textContent = (i + 1);
+        let canvasContainer = document.querySelector(".canvas-container");
+        canvasContainer.appendChild(newDiv);
+}}
+
+function destroyGrid(className) {
+let canvasContainerRemove = document.querySelectorAll('div.' + className);
+canvasContainerRemove.forEach(function(element) {
+    element.remove();
+    let restoreDiv = document.createElement("div");
+    restoreDiv.className = ("canvas-container");
+    restoreDiv.appendChild(body);
+
+})}
+
+/****let newDivGroup = document.createElement("div");
+        newDivGroup.className = ("divGroup-" + gridGroup ) */
