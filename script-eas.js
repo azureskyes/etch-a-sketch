@@ -22,38 +22,158 @@ for (let g = 0; g < g; g++) {
 document.querySelector('#gridForm').addEventListener('submit', function(event) {
     event.preventDefault();
     let gridNum = document.querySelector("#gridInput").value;
-    console.log('Grid Size:', gridNum);
-    createGroup(gridNum);
+    console.log('Pixel count:', gridNum);
+    createGrid(gridNum);
 });
 
+function clearCanvas() {
+    let parentDiv = document.querySelector('.canvas-container')
+    let childDivs = parentDiv.querySelectorAll('div');
+    childDivs.forEach(function(childDiv) {
+        childDiv.remove();
+    })
+}
 
 function createGroup(groupSize) {
+    clearCanvas();
     let gSize = groupSize;
     for (let i = 0; i < gSize; i++) {
         createColumn(groupSize);
-        console.log(i)
+        console.log(i);
     }
 }
+
+/*createGroup(16);*/
 
 function createColumn(columnSize) {
     let cSize = columnSize; 
     for (let i = 0; i < cSize; i++) {
         let newDiv = document.createElement("div");
-        newDiv.className = ("div-" + (i + 1));
+        newDiv.className = ("div-pixel");
         newDiv.textContent = (i + 1);
         let canvasContainer = document.querySelector(".canvas-container");
         canvasContainer.appendChild(newDiv);
 }}
 
-function destroyGrid(className) {
-let canvasContainerRemove = document.querySelectorAll('div.' + className);
+let isDrawing = false;
+
+document.addEventListener('mousedown', () => {
+    isDrawing = true;
+});
+document.addEventListener('mouseup', () => {
+    isDrawing = false;
+});
+
+document.querySelector('.canvas-container').addEventListener('mousedown', (e) =>{
+    if (e.target.classList.contains('div-pixel')) {
+            e.target.style.backgroundColor = 'gray';
+    }
+});
+document.querySelector('.canvas-container').addEventListener('mouseover', (e) =>{
+    if (e.target.classList.contains('div-pixel')) {
+            e.target.style.backgroundColor = 'gray';
+    }
+});
+
+document.querySelectorAll('.div-pixel').forEach(pixel => {
+    pixel.addEventListener('mousedown', (e) => {
+        e.target.style.backgroundColor = 'gray';
+    });
+});
+
+document.querySelectorAll('.div-pixel').forEach(pixel => {
+    pixel.addEventListener('mouseover', (e) => {
+        e.target.style.backgroundColor = 'gray';
+    });
+});
+
+function createGrid(totalPixels) {
+    const container = document.querySelector('.canvas-container');
+    container.innerHTML = ''; // Clear any existing pixels
+
+    const pixelsPerSide = Math.sqrt(totalPixels); // Calculate how many pixels fit on one side of the square grid
+    const pixelSize = 960 / pixelsPerSide; // Calculate the size of each pixel to fit the container
+
+    for (let i = 0; i < totalPixels; i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('div-pixel');
+        pixel.className = ("div-pixel");
+        pixel.textContent = (i + 1);
+        // Set the size of each pixel dynamically
+        pixel.style.width = `${pixelSize}px`;
+        pixel.style.height = `${pixelSize}px`;
+        container.appendChild(pixel);
+    }
+}
+
+createGrid(16*16);
+
+/**let isDrawing = false;
+document.addEventListener('mousedown', () => {
+    isDrawing = true;
+});
+document.addEventListener('mouseup', () => {
+    isDrawing = false;
+});
+
+let pixels = document.querySelectorAll('.div.pixel');
+
+pixels.forEach(pixel => {
+    // Mouseover event
+    pixel.addEventListener('mouseover', (e) => {
+        if (isDrawing) { // Assuming isDrawing is defined and managed elsewhere
+            e.target.style.backgroundColor = 'gray';
+        }
+    });
+
+    // Mousedown event
+    pixel.addEventListener('mousedown', (e) => {
+        e.target.style.backgroundColor = 'gray';
+    });
+});
+
+/**function createGrid(cellCount) {
+    const container = document.querySelector('.canvas-container');
+    container.innerHTML = ''; // Clear any existing content
+  
+    let cellSquared= cellCount * cellCount; // Calculate the total number of cells for a square grid
+
+    for (let i = 0; i < cellSquared; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        container.appendChild(cell);
+    }
+}**/
+/* 
+function destroyGridContainer(divName) {
+let canvasContainerRemove = document.querySelectorAll('div.' + divName);
 canvasContainerRemove.forEach(function(element) {
     element.remove();
-    let restoreDiv = document.createElement("div");
-    restoreDiv.className = ("canvas-container");
-    restoreDiv.appendChild(body);
-
+    restoreGridContainer(divName);
 })}
+function restoreGridContainer(divName) {
+let restoreDiv = document.createElement("div");
+restoreDiv.className = (divName);
+document.body.appendChild(restoreDiv);
+}
+*/
 
-/****let newDivGroup = document.createElement("div");
-        newDivGroup.className = ("divGroup-" + gridGroup ) */
+/*
+
+function createGroup(groupSize) {
+    clearCanvas();
+    let gSize = groupSize;
+    for (let i = 0; i < gSize; i++) {
+        let newDivGroup = document.createElement("div");
+        newDivGroup.className = ("divGroup-" + (i + 1));
+        let canvasContainer = document.querySelector(".canvas-container");
+        canvasContainer.appendChild(newDivGroup);
+        let newDiv = document.createElement("div");
+        newDiv.className = ("div-box");
+        newDiv.textContent = (i + 1);
+        newDivGroup.appendChild(newDiv);
+        console.log(i + 1);
+    }
+}
+
+*/

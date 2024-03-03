@@ -4,3 +4,37 @@
     color: rgb(255, 255, 255);
     margin: 0;
 }
+
+.canvas-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 960px;
+    aspect-ratio: 1;
+
+    
+}
+
+.div-pixel {
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    aspect-ratio: 1;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    gap: 1px;
+    cursor: pointer;
+
+}
+
+/**
+div[class^="divGroup-"]  {
+  display:flex;
+   
+}
+.div-box {
+    display:flex;
+    background-color: rgb(98, 98, 98);
+}**/
