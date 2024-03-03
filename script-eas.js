@@ -22,8 +22,15 @@ for (let g = 0; g < g; g++) {
 document.querySelector('#gridForm').addEventListener('submit', function(event) {
     event.preventDefault();
     let gridNum = document.querySelector("#gridInput").value;
-    console.log('Pixel count:', gridNum);
-    createGrid(gridNum);
+    let gridNumSqRt = Math.sqrt(gridNum);
+    let isPerfectSquare = gridNumSqRt === parseInt(gridNumSqRt);
+    if (isPerfectSquare) {
+        console.log('Grid Size input is a square root. Done.', 'Pixel count:', gridNum);
+        createGrid(gridNum);
+    } else {
+        console.log('Grid Size input is not a square root. Defaulting to 256 pixels / 16x16.');
+        createGrid(256);
+    }
 });
 
 function clearCanvas() {
