@@ -26,7 +26,12 @@
     padding: 0;
     gap: 1px;
     cursor: pointer;
+    border-radius: 10px;
 
+}
+
+button {
+    border-radius: 10px;
 }
 
 /**
