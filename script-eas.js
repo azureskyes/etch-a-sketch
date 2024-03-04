@@ -38,24 +38,24 @@ function grayscaleEtch () {
 let isGrayscale = true;
 document.querySelector('.canvas-container').addEventListener('mousedown', (e) =>{
     if (e.target.classList.contains('div-pixel')) {
-            e.target.style.backgroundColor = 'gray';
+            e.target.style.backgroundColor = rgb(120,120,120);
     }
 });
 document.querySelector('.canvas-container').addEventListener('mouseover', (e) =>{
     if (e.target.classList.contains('div-pixel')) {
-            e.target.style.backgroundColor = 'gray';
+            e.target.style.backgroundColor = `rgb(120,120,120)`;
     }
 });
 
 document.querySelectorAll('.div-pixel').forEach(pixel => {
     pixel.addEventListener('mousedown', (e) => {
-        e.target.style.backgroundColor = 'gray';
+        e.target.style.backgroundColor = `rgb(120,120,120)`;
     });
 });
 
 document.querySelectorAll('.div-pixel').forEach(pixel => {
     pixel.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = 'gray';
+        e.target.style.backgroundColor = `rgb(120,120,120)`;
     });
 });
 }
@@ -118,6 +118,16 @@ function resetEtch() {
     createGrid(256);
     let slider = document.querySelector('.gridSlider');
     slider.value = 2;
+    const sliderOptions = 
+    [9, 16, 25, 36, 49,
+    64, 81, 100, 121, 144,
+    169, 196, 225, 256, 289,
+    324, 361, 400, 441, 484,
+    529, 576, 625, 676, 729,
+    784, 841, 900, 961, 1024]; 
+    let display = document.getElementById('sliderValue');
+    display.textContent = sliderOptions[1];
+
     console.log('Canvas has been reset to default 16x16.');
 }
 
@@ -172,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('input', (e) => {
         const index = parseInt(e.target.value) - 1;
         const selectedValue = sliderOptions[index];
-        display.textContent = selectedValue;
+        display.textContent = (selectedValue, "x", selectedValue);
         let gridNum = selectedValue;
         console.log('Grid Size input is a perfect square. Done.', 'Pixel count:', gridNum);
         createGrid(gridNum);

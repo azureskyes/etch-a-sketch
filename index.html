@@ -1,29 +1,33 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
     <title>Etch-A-Sketch / azureskyes
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Etch-A-Sketch: The Odin Project Curriculum">
     <meta name="keywords" content="Etch-A-Sketch: The Odin Project">
     <script src="script-eas.js" defer></script>
     <link rel="stylesheet" href="style-eas.css">
 </head>
 <body>
-    <div class="title-container">Etch-A-Sketch</div>
-    <input type="range" class="gridSlider" min="1" max="30" value="1" step="1">
-    <div>Grid Size: <span id="sliderValue">16</span></div>
+<div class="main-container">
+    <div class="title-container">etch / a / sketch .</div>
+    <div class="gridSliderBar">
+        <input type="range" class="gridSlider" min="1" max="30" value="1" step="1">
+    </div>
+        <div class="gridInfo"><span id="sliderValue">16</span></div>
 <div class="colorButtons">
-
-    <button class="grayscale">Grayscale</button>
-    <button class="rainbow">Rainbow</button>
-    <button class="eraser">Eraser</button>
-    <button class="resetAll">Reset</button>
+    <button class="grayscale">grayscale</button>
+    <button class="rainbow">rainbow</button>
+    <button class="eraser">eraser</button>
+    <button class="resetAll">reset</button>
 </div>
+    <div class="canvas-main">
     <div class="canvas-container"></div>
-
-
-
-
+    </div>
+    <div class="copyrightMark">
+       <a href="https://github.com/azureskyes" style="text-decoration: none">azureskyes © 2024</a>
+    </div>
+</div>
 </body>
 </html>

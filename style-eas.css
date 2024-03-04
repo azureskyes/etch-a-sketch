@@ -1,8 +1,70 @@
 * {
     font-family: -apple-system, San Fransisco, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #2d2d2d;
-    color: rgb(255, 255, 255);
+    background-color: #272727;
+    color: rgb(218, 218, 218);
     margin: 0;
+}
+ 
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+input[type="range"] {
+    width: 445px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+    color:#4CAF50;
+   
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 15px;
+    border-radius: 10px;
+    background: #393939; /* Color of the track */
+}
+
+.colorButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 68px;
+    padding: 20px;
+}
+
+.gridSliderBar {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridInfo {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 0px;
+    font-size:50px;
+   
+}
+
+.canvas-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .canvas-container {
@@ -11,8 +73,7 @@
     width: 960px;
     height: 960px;
     aspect-ratio: 1;
-
-    
+    padding: 20px;
 }
 
 .div-pixel {
@@ -27,13 +88,32 @@
     gap: 1px;
     cursor: pointer;
     border-radius: 10px;
+    color:rgb(100, 100, 100);
+    font-size: 10px;
 
 }
 
 button {
     border-radius: 10px;
+    box-shadow: none;
+    border: none;
+    height: 20px;
+    font-size: 25px;
+    cursor: pointer;
 }
 
+.grayscale, .rainbow, .eraser, .resetAll {
+    color:#6e5e79;
+}
+
+.copyrightMark, a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(125, 125, 125);
+    font-size: 20px;
+    margin-top: auto;
+}
 /**
 div[class^="divGroup-"]  {
   display:flex;
