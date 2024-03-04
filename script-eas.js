@@ -115,6 +115,34 @@ function createGrid(totalPixels) {
 
 createGrid(16*16);
 
+document.addEventListener('DOMContentLoaded', () => {
+    let slider = document.querySelector('.gridSlider');
+    let display = document.getElementById('sliderValue');
+
+    const sliderOptions = 
+    [9, 16, 25, 36, 49,
+    64, 81, 100, 121, 144,
+    169, 196, 225, 256, 289,
+    324, 361, 400, 441, 484,
+    529, 576, 625, 676, 729,
+    784, 841, 900, 961, 1024];
+
+    slider.addEventListener('input', (e) => {
+        const index = parseInt(e.target.value) - 1;
+        const selectedValue = sliderOptions[index];
+        display.textContent = selectedValue;
+    })
+
+    document.querySelector('#gridForm').addEventListener('submit', (e) => {
+        event.preventDefault();
+        const index = parseInt(slider.value) - 1;
+        let gridNum = sliderOptions[index];
+
+        console.log('Grid Size input is a square root. Done.', 'Pixel count:', gridNum);
+        createGrid(gridNum);
+    })
+})
+
 /**let isDrawing = false;
 document.addEventListener('mousedown', () => {
     isDrawing = true;
